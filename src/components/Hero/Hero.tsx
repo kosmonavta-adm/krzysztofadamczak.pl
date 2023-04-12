@@ -1,10 +1,11 @@
 import * as sHero from './Hero.styles';
 import * as sCommons from '../commons/index';
+import * as sTypography from '../commons/Typography.styles';
 
 export const Hero = () => (
     <sHero.Wrapper>
-        <sHero.H1>Dość błazeństw, żrą mój pęk luźnych fig </sHero.H1>
-        <sHero.H2>Fron End Developer</sHero.H2>
+        <sTypography.H1>Krzysztof Adamczak</sTypography.H1>
+        <sTypography.H2>Front End Developer</sTypography.H2>
         <sCommons.Button>Zobacz moje portfolio</sCommons.Button>
     </sHero.Wrapper>
 );
