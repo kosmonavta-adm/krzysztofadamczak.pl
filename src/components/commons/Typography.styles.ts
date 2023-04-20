@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 const BaseFont = css`
-    font-family: ${({ theme }) => theme.font};
+    font-family: ${({ theme }) => theme.font.secondary};
 `;
 
 export const H1 = styled.h1`
@@ -28,7 +29,28 @@ export const H4 = styled.h4`
     font-weight: 500;
 `;
 
+export const H5 = styled.h5`
+    ${BaseFont}
+    font-size: 18px;
+    font-weight: 500;
+`;
+
 export const Text = styled.p`
+    font-family: ${({ theme }) => theme.font.primary};
     text-align: justify;
     line-height: 2;
+`;
+
+export const TextLink = styled(Link)`
+    ${BaseFont}
+    display: flex;
+    gap: 6px;
+    color: ${({ theme }) => theme.colors.purple[0]};
+    font-weight: 700;
+    transition: color 0.2s ease-in-out;
+    align-items: center;
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.purple[1]};
+    }
 `;
