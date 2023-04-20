@@ -12,7 +12,7 @@ export const Button = styled.button`
     transition-property: background-color, transform, box-shadow;
     box-shadow: 0 5px 10px rgb(10 0 143 / 40%);
     font-size: 16px;
-    font-family: ${({ theme }) => theme.font};
+    font-family: ${({ theme }) => theme.font.secondary};
     :hover {
         background-color: ${({ theme }) => theme.colors.purple[1]};
         transform: scale(0.98);
