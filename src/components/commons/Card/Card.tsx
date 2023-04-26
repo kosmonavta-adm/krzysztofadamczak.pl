@@ -6,7 +6,17 @@ import externalLink from '/public/icons/externalLink.svg';
 import * as sTypography from '../Typography.styles';
 
 import * as sCard from './Card.styles';
-const Card = ({ thumbnail, title, description, tags }) => {
+const Card = ({
+    thumbnail,
+    title,
+    description,
+    tags,
+}: {
+    thumbnail: string;
+    title: string;
+    description: string;
+    tags: string[];
+}) => {
     return (
         <sCard.Wrapper>
             <sCard.Thumbnail>
@@ -23,7 +33,7 @@ const Card = ({ thumbnail, title, description, tags }) => {
                 <sTypography.Text>{description}</sTypography.Text>
                 <sCard.Tags>
                     {tags.map((tag) => (
-                        <sCard.Tag>{tag}</sCard.Tag>
+                        <sCard.Tag key={tag}>{tag}</sCard.Tag>
                     ))}
                 </sCard.Tags>
                 <sCard.Links>

@@ -42,7 +42,7 @@ export const Text = styled.p`
     font-size: 16px;
 `;
 
-export const TextLink = styled(Link)`
+export const TextLink = styled(Link)<{ $small?: boolean }>`
     ${BaseFont}
     display: flex;
     gap: 8px;

@@ -45,7 +45,7 @@ const AboutMe = () => {
                     <sTypography.H4>Technologie z których aktualnie korzystam</sTypography.H4>
                     <sAbout.TagWrapper>
                         {tags.map((tag) => (
-                            <sCommons.Tag>{tag}</sCommons.Tag>
+                            <sCommons.Tag key={tag}>{tag}</sCommons.Tag>
                         ))}
                     </sAbout.TagWrapper>
                 </sAbout.Tech>
