@@ -5,12 +5,12 @@ export const Wrapper = styled.article`
     flex-direction: column;
     overflow: hidden;
     border-radius: 5px;
-    box-shadow: 0 5px 10px rgb(10 0 143 / 10%);
+    box-shadow: ${({ theme }) => theme.shadows.subtle[0]};
     transition: all 0.3s cubic-bezier(0, 0, 0.25, 1);
 
     &:hover {
         transform: scale(1.05);
-        box-shadow: 0 10px 30px rgb(10 0 143 / 5%);
+        box-shadow: ${({ theme }) => theme.shadows.subtle[1]};
     }
 `;
 
@@ -26,18 +26,6 @@ export const Content = styled.div`
     flex-direction: column;
     padding: 16px;
     gap: 16px;
-`;
-
-export const Title = styled.p`
-    font-size: 24px;
-    font-weight: 500;
-    font-family: ${({ theme }) => theme.font.secondary};
-`;
-
-export const Description = styled.p`
-    text-align: justify;
-    font-family: ${({ theme }) => theme.font.primary};
-    line-height: 1.5;
 `;
 
 export const Tags = styled.div`

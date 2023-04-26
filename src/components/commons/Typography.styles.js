@@ -39,19 +39,21 @@ export const Text = styled.p`
     font-family: ${({ theme }) => theme.font.primary};
     text-align: justify;
     line-height: 2;
+    font-size: 16px;
 `;
 
 export const TextLink = styled(Link)`
     ${BaseFont}
     display: flex;
     gap: 8px;
-    color: ${({ theme }) => theme.colors.purple[0]};
+    font-size: ${({ $small }) => ($small ? '14px' : '16px')};
+    color: ${({ theme }) => theme.colors.blue[1]};
     font-weight: 700;
     transition: color 0.2s ease-in-out;
     align-items: center;
     line-height: 1;
 
     &:hover {
-        color: ${({ theme }) => theme.colors.purple[1]};
+        color: ${({ theme }) => theme.colors.blue[0]};
     }
 `;

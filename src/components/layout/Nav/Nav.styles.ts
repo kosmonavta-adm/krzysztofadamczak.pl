@@ -14,4 +14,5 @@ export const NavItem = styled.li`
     text-decoration: none;
     display: block;
     cursor: pointer;
+    font-family: ${({ theme }) => theme.font.secondary};
 `;
