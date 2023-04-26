@@ -3,38 +3,38 @@ import { Sono, Montserrat } from 'next/font/google';
 const sono = Sono({ subsets: ['latin', 'latin-ext'] });
 const montserrat = Montserrat({ subsets: ['latin', 'latin-ext'] });
 
-// declare module 'styled-components' {
-//     export interface DefaultTheme {
-//         font: {
-//             primary: string;
-//             secondary: string;
-//         };
-//         colors: {
-//             purple: {
-//                 0: string;
-//                 1: string;
-//                 2: string;
-//                 3: string;
-//             };
-//             blue: {
-//                 1: string;
-//                 0: string;
-//             };
-//             white: string;
-//         };
-//         shadows: {
-//             subtle: {
-//                 0: string;
-//                 1: string;
-//             };
-//             intense: {
-//                 0: string;
-//                 1: string;
-//             };
-//             sharp: string;
-//         };
-//     }
-// }
+declare module 'styled-components' {
+    export interface DefaultTheme {
+        font: {
+            primary: string;
+            secondary: string;
+        };
+        colors: {
+            purple: {
+                0: string;
+                1: string;
+                2: string;
+                3: string;
+            };
+            blue: {
+                1: string;
+                0: string;
+            };
+            white: string;
+        };
+        shadows: {
+            subtle: {
+                0: string;
+                1: string;
+            };
+            intense: {
+                0: string;
+                1: string;
+            };
+            sharp: string;
+        };
+    }
+}
 
 export const theme = {
     font: {
