@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
+    gap: 16px;
 `;
 
 export const Projects = styled.div`

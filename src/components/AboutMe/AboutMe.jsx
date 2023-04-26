@@ -4,7 +4,7 @@ import doubleArrow from '/public/icons/doubleArrow.svg';
 
 import * as sAbout from './AboutMe.styles';
 import * as sTypography from '../commons/Typography.styles';
-import * as sCommons from '../commons/';
+import * as sCommons from '../commons';
 
 const tags = [
     'Java Script (ES6+)',
@@ -52,7 +52,10 @@ const AboutMe = () => {
             </sAbout.Main>
             <sAbout.Links>
                 <sTypography.H5>Warto zajrzeć</sTypography.H5>
-                <sTypography.TextLink href="https://github.com/kosmonavta-adm">
+                <sTypography.TextLink
+                    small
+                    href="https://github.com/kosmonavta-adm"
+                >
                     <Image
                         src={doubleArrow}
                         width={16}

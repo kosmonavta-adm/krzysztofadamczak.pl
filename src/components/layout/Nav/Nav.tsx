@@ -1,5 +1,5 @@
 import * as Styled from './Nav.styles';
-// ANCHOR Test
+
 const menuPaths = [
     {
         title: 'O mnie',
@@ -32,7 +32,6 @@ export const Nav = () => {
                         {title}
                     </Styled.NavItem>
                 ))}
-                <Styled.NavItem></Styled.NavItem>
             </Styled.NavList>
         </Styled.Nav>
     );

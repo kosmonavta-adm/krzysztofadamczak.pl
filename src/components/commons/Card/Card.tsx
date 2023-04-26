@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import github from '/public/icons/github.svg';
 import externalLink from '/public/icons/externalLink.svg';
@@ -20,8 +19,8 @@ const Card = ({ thumbnail, title, description, tags }) => {
                 />
             </sCard.Thumbnail>
             <sCard.Content>
-                <sCard.Title>{title}</sCard.Title>
-                <sCard.Description>{description}</sCard.Description>
+                <sTypography.H4>{title}</sTypography.H4>
+                <sTypography.Text>{description}</sTypography.Text>
                 <sCard.Tags>
                     {tags.map((tag) => (
                         <sCard.Tag>{tag}</sCard.Tag>
@@ -37,7 +36,10 @@ const Card = ({ thumbnail, title, description, tags }) => {
                         />
                         GitHub
                     </sTypography.TextLink>
-                    <sTypography.TextLink href="/">
+                    <sTypography.TextLink
+                        href="/"
+                        $small
+                    >
                         <Image
                             src={externalLink}
                             alt="External link"
