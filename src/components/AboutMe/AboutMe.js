@@ -23,7 +23,7 @@ const tags = [
     'GIT',
 ];
 
-export const AboutMe = () => {
+const AboutMe = () => {
     return (
         <sAbout.Wrapper>
             <sAbout.Main>

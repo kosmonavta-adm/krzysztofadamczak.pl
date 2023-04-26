@@ -44,11 +44,12 @@ export const Text = styled.p`
 export const TextLink = styled(Link)`
     ${BaseFont}
     display: flex;
-    gap: 6px;
+    gap: 8px;
     color: ${({ theme }) => theme.colors.purple[0]};
     font-weight: 700;
     transition: color 0.2s ease-in-out;
     align-items: center;
+    line-height: 1;
 
     &:hover {
         color: ${({ theme }) => theme.colors.purple[1]};
