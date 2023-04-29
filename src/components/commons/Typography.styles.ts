@@ -47,13 +47,13 @@ export const TextLink = styled(Link)<{ $small?: boolean }>`
     display: flex;
     gap: 8px;
     font-size: ${({ $small }) => ($small ? '14px' : '16px')};
-    color: ${({ theme }) => theme.colors.blue[1]};
+    color: ${({ theme }) => theme.colors.blue[0]};
     font-weight: 700;
     transition: color 0.2s ease-in-out;
     align-items: center;
     line-height: 1;
 
     &:hover {
-        color: ${({ theme }) => theme.colors.blue[0]};
+        color: ${({ theme }) => theme.colors.blue[1]};
     }
 `;

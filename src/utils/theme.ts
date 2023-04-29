@@ -17,8 +17,12 @@ declare module 'styled-components' {
                 3: string;
             };
             blue: {
-                1: string;
                 0: string;
+                1: string;
+            };
+            grey: {
+                0: string;
+                1: string;
             };
             white: string;
         };
@@ -51,6 +55,10 @@ export const theme = {
         blue: {
             1: 'hsl(213deg 100% 70%)',
             0: 'hsl(213deg 100% 60%)',
+        },
+        grey: {
+            0: 'hsl(0deg 0% 15%)',
+            1: 'hsl(0deg 0% 25%)',
         },
         white: 'hsl(0deg 0% 100%)',
     },

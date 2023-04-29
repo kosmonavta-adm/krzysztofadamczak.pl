@@ -32,7 +32,7 @@ const AboutMe = () => {
                     <sTypography.Text>
                         Cześć! Mam na imię Krzysztof. Programowanie to moja pasja odkąd tylko
                         pamiętam. Już za szkolnych lat ciągnęło mnie do różnych języków
-                        programowania, tworzyłem pierwsze strony, małe programy, krótko mówiąc -
+                        programowania, tworzyłem pierwsze strony, programy, krótko mówiąc -
                         wcielałem w życie wszystkie małe zajawki. Ta pasja trwa nieprzerwanie do
                         dziś. Zawsze będzie nowy framework, nowa biblioteka czy nowy język którego
                         będę chciał się nauczyć. Wciąż towarzyszy mi niezmienne zaangażowanie do
@@ -53,7 +53,7 @@ const AboutMe = () => {
             <sAbout.Links>
                 <sTypography.H5>Warto zajrzeć</sTypography.H5>
                 <sTypography.TextLink
-                    small
+                    $small
                     href="https://github.com/kosmonavta-adm"
                 >
                     <Image

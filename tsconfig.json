@@ -19,6 +19,16 @@
             "@/public/*": ["./public/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "src/components/AboutMe/AboutMe.jsx",
+        "src/pages/_app.jsx",
+        "src/pages/_document.jsx",
+        "src/components/commons/Typography.styles.js",
+        "src/components/AboutMe/AboutMe.styles.js",
+        "src/utils/theme.js"
+    ],
     "exclude": ["node_modules"]
 }
