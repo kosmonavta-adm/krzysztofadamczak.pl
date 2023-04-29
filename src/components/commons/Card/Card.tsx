@@ -37,7 +37,10 @@ const Card = ({
                     ))}
                 </sCard.Tags>
                 <sCard.Links>
-                    <sTypography.TextLink href="/">
+                    <sTypography.TextLink
+                        $small
+                        href="/"
+                    >
                         <Image
                             src={github}
                             alt="GitHub logo"
