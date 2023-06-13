@@ -11,11 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <>
             <GlobalStyles />
             <ThemeProvider theme={theme}>
-                <MainContainer>
-                    <Nav />
-                    <Component {...pageProps} />
-                    <Footer />
-                </MainContainer>
+                <Component {...pageProps} />
             </ThemeProvider>
         </>
     );

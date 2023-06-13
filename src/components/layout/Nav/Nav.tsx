@@ -15,7 +15,13 @@ const menuPaths = [
     },
 ];
 
-export const Nav = ({ small }: { small?: boolean }) => {
+export const Nav = ({
+    $small = false,
+    $onDark = false,
+}: {
+    $small?: boolean;
+    $onDark?: boolean;
+}) => {
     const handleScroll = (to: string) => () => {
         //TODO: I'm not sure how to do this with refs and typescript, temporary solution.
         const element = document.getElementById(to);
@@ -23,12 +29,13 @@ export const Nav = ({ small }: { small?: boolean }) => {
     };
     return (
         <Styled.Nav>
-            <Styled.NavList small={small}>
+            <Styled.NavList $small={$small}>
                 {menuPaths.map(({ title, id }) => (
                     <Styled.NavItem
-                        small={small}
+                        $small={$small}
                         key={id}
                         onClick={handleScroll(id)}
+                        $onDark={$onDark}
                     >
                         {title}
                     </Styled.NavItem>
