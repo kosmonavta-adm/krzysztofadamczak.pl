@@ -5,14 +5,16 @@ const BaseFont = css`
     font-family: ${({ theme }) => theme.font.secondary};
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled.h1<{ $onDark?: boolean }>`
     ${BaseFont}
+    color: ${({ theme, $onDark }) => ($onDark ? theme.colors.white : null)};
     font-size: clamp(3rem, calc(2.82rem + 0.9vw), 3.75rem);
     font-weight: 500;
 `;
 
-export const H2 = styled.h2`
+export const H2 = styled.h2<{ $onDark?: boolean }>`
     ${BaseFont}
+    color: ${({ theme, $onDark }) => ($onDark ? theme.colors.white : null)};
     font-size: clamp(1.75rem, calc(1.69rem + 0.3vw), 2rem);
     font-weight: 300;
 `;

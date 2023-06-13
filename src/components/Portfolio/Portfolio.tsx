@@ -1,5 +1,6 @@
 import Card from '../commons/Card/Card';
 
+import * as sContainers from '@/components/layout/Containers.styles';
 import * as sTypography from '../commons/Typography.styles';
 import * as sPortfolio from './Portfolio.styles';
 
@@ -35,17 +36,19 @@ const projects = [
 
 const Portfolio = () => {
     return (
-        <sPortfolio.Wrapper>
-            <sTypography.H3>Projekty</sTypography.H3>
-            <sTypography.Text>
-                Poniżej znajduje się kilka projektów nad którymi ostatnio pracowałem.
-            </sTypography.Text>
-            <sPortfolio.Projects>
-                {projects.map((project) => (
-                    <Card {...project} />
-                ))}
-            </sPortfolio.Projects>
-        </sPortfolio.Wrapper>
+        <sContainers.Base>
+            <sPortfolio.Wrapper>
+                <sTypography.H3>Projekty</sTypography.H3>
+                <sTypography.Text>
+                    Poniżej znajduje się kilka projektów nad którymi ostatnio pracowałem.
+                </sTypography.Text>
+                <sPortfolio.Projects>
+                    {projects.map((project) => (
+                        <Card {...project} />
+                    ))}
+                </sPortfolio.Projects>
+            </sPortfolio.Wrapper>
+        </sContainers.Base>
     );
 };
 
