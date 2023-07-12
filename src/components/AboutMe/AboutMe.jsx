@@ -1,25 +1,21 @@
-import Image from 'next/image';
+import * as sAbout from '@/components/AboutMe/AboutMe.styles';
+import * as sContainers from '@/components/Container/Containers.styles';
+import * as sTypography from '@/utils/styles/Typography.styles';
 
-import doubleArrow from '/public/icons/doubleArrow.svg';
-
-import * as sAbout from './AboutMe.styles';
-import * as sContainers from '@/components/layout/Containers.styles';
-import * as sTypography from '../commons/Typography.styles';
-import * as sCommons from '../commons';
+import Tag from '@/components/Tag/Tag.styles';
 
 const tags = [
     'Java Script (ES6+)',
     'Type Script',
-    'HTML',
-    'CSS',
     'React',
     'Next.js',
-    'Express.js',
+    'HTML',
+    'CSS',
+    'SCSS',
+    'Styled Components',
     'Day.js',
     'Figma',
     'Visual Studio Code',
-    'Adobe Illustrator',
-    'Adobe Photoshop',
     'GitHub',
     'GIT',
 ];
@@ -44,29 +40,14 @@ const AboutMe = () => {
                         </sTypography.Text>
                     </sAbout.TextWrapper>
                     <sAbout.Tech>
-                        <sTypography.H4>Technologie z których aktualnie korzystam</sTypography.H4>
+                        <sTypography.H4>Z czego aktualnie korzystam</sTypography.H4>
                         <sAbout.TagWrapper>
                             {tags.map((tag) => (
-                                <sCommons.Tag key={tag}>{tag}</sCommons.Tag>
+                                <Tag key={tag}>{tag}</Tag>
                             ))}
                         </sAbout.TagWrapper>
                     </sAbout.Tech>
                 </sAbout.Main>
-                <sAbout.Links>
-                    <sTypography.H5>Warto zajrzeć</sTypography.H5>
-                    <sTypography.TextLink
-                        $small
-                        href="https://github.com/kosmonavta-adm"
-                    >
-                        <Image
-                            src={doubleArrow}
-                            width={16}
-                            height={16}
-                            alt={'Strzałka wskazująca na link'}
-                        />
-                        GitHub
-                    </sTypography.TextLink>
-                </sAbout.Links>
             </sAbout.Wrapper>
         </sContainers.Base>
     );

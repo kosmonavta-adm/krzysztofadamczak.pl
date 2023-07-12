@@ -1,23 +1,24 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, RefObject } from 'react';
 import * as Three from 'three';
 
-import * as sCanvas from './Sky.styles';
+import * as sCanvas from '@/components/Hero/parts/Sky/Sky.styles';
 
-const Sky = () => {
+const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    let requestAnimationFrameIdRef = useRef<number>(0);
+    const requestAnimationFrameIdRef = useRef<number>(0);
 
     useEffect(() => {
-        if (canvasRef.current == null) {
+        if (canvasRef.current == null || heroRef.current == null) {
             throw new Error('Canvas is not found');
         }
 
-        const { offsetWidth: width, offsetHeight: height } = canvasRef.current;
+        const { offsetHeight: height } = heroRef.current;
+        const { clientWidth: width } = document.body;
 
         const scene = new Three.Scene();
         const camera = new Three.PerspectiveCamera(75, width / height, 1, 900);
 
-        camera.position.z = 500;
+        camera.position.z = height > 400 ? 500 : 400;
         camera.position.y = 0;
         camera.position.x = 0;
 
@@ -28,8 +29,26 @@ const Sky = () => {
         });
 
         renderer.setSize(width, height);
+        let starsAmount = height >= 900 ? 30000 : 15000;
+        const handleResize = () => {
+            if (heroRef.current == null) {
+                return;
+            }
 
-        const starsAmount = 30000;
+            const { offsetHeight: height } = heroRef.current;
+            const { clientWidth: width } = document.body;
+            starsAmount = height >= 900 ? 30000 : 15000;
+
+            camera.aspect = width / height;
+            camera.position.z = height > 400 ? 500 : 400;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        };
+
+        window.addEventListener('resize', handleResize);
+
         const starsBufferLength = starsAmount * 3;
 
         const stars = {
@@ -96,6 +115,7 @@ const Sky = () => {
             stars.buffer.dispose();
             stars.material.dispose();
             window.cancelAnimationFrame(requestAnimationFrameIdRef.current);
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 

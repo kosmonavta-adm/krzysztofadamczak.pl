@@ -15,20 +15,13 @@
         "jsx": "preserve",
         "incremental": true,
         "paths": {
-            "@/*": ["./src/*"],
-            "@/public/*": ["./public/*"]
+            "@/components/*": ["./src/components/*"],
+            "@/utils/*": ["./src/utils/*"],
+            "@/posts/*": ["./src/posts/*"],
+            "@/public/*": ["./public/*"],
+            "@/providers/*": ["./src/providers/*"]
         }
     },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "src/components/AboutMe/AboutMe.jsx",
-        "src/pages/_app.jsx",
-        "src/pages/_document.jsx",
-        "src/components/commons/Typography.styles.js",
-        "src/components/AboutMe/AboutMe.styles.js",
-        "src/utils/theme.js"
-    ],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]
 }
