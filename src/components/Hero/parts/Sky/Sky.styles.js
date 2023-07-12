@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Canvas = styled.canvas`
     display: flex;
-    aspect-ratio: 1/1;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -126,5 +125,5 @@ export const Canvas = styled.canvas`
 export const Wrapper = styled.div`
     display: flex;
     position: relative;
-    padding: 64px 0 256px 0;
+    overflow: hidden;
 `;

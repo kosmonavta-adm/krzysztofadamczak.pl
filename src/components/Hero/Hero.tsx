@@ -1,28 +1,29 @@
-import { Nav } from '../layout/Nav/Nav';
-import Sky from './parts/Sky/Sky';
-import * as sCommons from '../commons/index';
+import { useRef } from 'react';
 
-import * as sHero from './Hero.styles';
-import * as sTypography from '../commons/Typography.styles';
-import * as sContainers from '@/components/layout/Containers.styles';
+import Nav from '@/components/Nav/Nav';
+import Sky from '@/components/Hero/parts/Sky/Sky';
+
+import Button from '@/components/Button/Button.styles';
+import * as sHero from '@/components/Hero/Hero.styles';
 import * as sSky from '@/components/Hero/parts/Sky/Sky.styles';
+import * as sTypography from '@/utils/styles/Typography.styles';
 
 const Hero = () => {
+    const heroRef = useRef<HTMLDivElement>(null);
+
     return (
         <sSky.Wrapper>
-            <sContainers.Base>
-                <sHero.Wrapper>
-                    <Nav $onDark />
-                    <sHero.Main>
-                        <sHero.Header>
-                            <sTypography.H1 $onDark>Krzysztof Adamczak</sTypography.H1>
-                            <sTypography.H2 $onDark>Front End Developer</sTypography.H2>
-                        </sHero.Header>
-                        <sCommons.Button>Zobacz moje portfolio</sCommons.Button>
-                    </sHero.Main>
-                </sHero.Wrapper>
-            </sContainers.Base>
-            <Sky />
+            <sHero.Wrapper ref={heroRef}>
+                <Nav position="hero" />
+                <sHero.Main>
+                    <sHero.Header>
+                        <sTypography.H1 $onDark>Krzysztof Adamczak</sTypography.H1>
+                        <sTypography.H2 $onDark>Front End Developer</sTypography.H2>
+                    </sHero.Header>
+                    <Button>Zobacz moje portfolio</Button>
+                </sHero.Main>
+            </sHero.Wrapper>
+            <Sky heroRef={heroRef} />
         </sSky.Wrapper>
     );
 };

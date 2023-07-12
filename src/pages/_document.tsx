@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 import { NextPage } from 'next';
@@ -11,6 +12,7 @@ export default function MyDocument(): NextPage {
             <body>
                 <Main />
                 <NextScript />
+                <div className="modals"></div>
             </body>
         </Html>
     );
