@@ -12,16 +12,19 @@ type ProjectWithoutKey = Omit<Project, 'id'>;
 
 const Card = ({ data }: { data: ProjectWithoutKey }) => {
     const { img, title, description, tags, githubUrl, liveUrl } = data;
+    const isImgPresent = img !== undefined;
     return (
         <sCard.Wrapper>
             <sCard.Thumbnail>
-                <Image
-                    src={img}
-                    alt="test"
-                    fill={true}
-                    style={{ objectFit: 'cover' }}
-                    quality={100}
-                />
+                {isImgPresent && (
+                    <Image
+                        src={img}
+                        alt="test"
+                        fill={true}
+                        style={{ objectFit: 'cover' }}
+                        quality={100}
+                    />
+                )}
             </sCard.Thumbnail>
             <sCard.Content>
                 <sTypography.H4>{title}</sTypography.H4>

@@ -1,73 +1,61 @@
 import dayjs from 'dayjs';
 import matter from 'gray-matter';
-import { PathLike } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { getCategoryPath, ITEMS_PER_PAGE } from '../constants';
 import { CategoryWithUrl, PostMetadata } from '../types';
 import { convertToSlug } from '../helpers';
+import { nanoid } from 'nanoid';
 
 const ARTICLES_PATH = join('src', 'articles');
 
-const convertSlugToFilename = (slug: string) => {
-    const slugSliced = slug.slice(1);
-    const firstLetterUpperCase = slug[0].toUpperCase();
-    const slugWithProperCase = firstLetterUpperCase + slugSliced;
-    const result = slugWithProperCase.replaceAll('-', ' ') + '.mdx';
-    return result;
-};
-
 export const getArticleFromSlug = async (slug: string) => {
-    const filename = convertSlugToFilename(slug);
+    const filename = `${slug}.mdx`;
     const source = await readFromFile(ARTICLES_PATH, filename);
     const { content } = matter(source);
     return content;
 };
 
 export const getCategories = async () => {
-    const files = await getFilesInDir(ARTICLES_PATH);
+    const files = await readdir(ARTICLES_PATH);
     const articlesMetadata = await getFilesMetadata(files);
     const categories = Promise.all(
-        articlesMetadata.reduce((result: CategoryWithUrl[], { categories }) => {
-            const doesNotHaveCategories = categories === undefined;
+        articlesMetadata.reduce((result: CategoryWithUrl[], { category }) => {
+            const doesNotHaveCategory = category === undefined;
 
-            if (doesNotHaveCategories) return result;
+            if (doesNotHaveCategory) return result;
 
-            categories.forEach((category) => {
-                const isNotIncluded = !result.some(
-                    (item: CategoryWithUrl) => item.category === category
-                );
+            const isCategoryAlreadyAdded = result.some(
+                (item: CategoryWithUrl) => item.category === category
+            );
 
-                const categoryAsSlug = convertToSlug(category);
+            if (isCategoryAlreadyAdded) return result;
 
-                if (isNotIncluded) {
-                    result.push({
-                        category,
-                        url: getCategoryPath(categoryAsSlug),
-                        id: crypto.randomUUID(),
-                    });
-                }
+            const categoryAsSlug = convertToSlug(category);
+
+            result.push({
+                category,
+                url: getCategoryPath(categoryAsSlug),
+                id: nanoid(),
             });
+
             return result;
         }, [])
     );
-
     return categories;
 };
 
 export const getCategoriesWithItems = (source: PostMetadata[]) =>
-    source.reduce((result, { categories }, index) => {
-        const doesNotHaveCategories = categories === undefined;
+    source.reduce((result, { category }, index) => {
+        const doesNotHaveCategories = category === undefined;
         if (doesNotHaveCategories) return result;
 
-        categories.forEach((category) => {
-            if (result[category] === undefined) {
-                result[category] = 1;
-            }
-            if (index % 3 === 0) {
-                result[category] += 1;
-            }
-        });
+        if (result[category] === undefined) {
+            result[category] = 1;
+        }
+        if (index % 3 === 0) {
+            result[category] += 1;
+        }
 
         return result;
     }, {} as { [key: string]: number });
@@ -76,7 +64,7 @@ const getMetadata = (source: Buffer): PostMetadata => {
     const { data: metadata } = matter(source);
 
     metadata.date = dayjs(metadata.date).toISOString();
-    metadata.uuid = crypto.randomUUID();
+    metadata.uuid = nanoid();
 
     return metadata as PostMetadata;
 };
@@ -84,8 +72,10 @@ const getMetadata = (source: Buffer): PostMetadata => {
 const getFilesMetadata = async (files: string[]): Promise<PostMetadata[]> => {
     return await Promise.all(
         files.map(async (file) => {
+            const slug = file.split('.')[0];
             const source = await readFromFile(ARTICLES_PATH, file);
             const metadata = getMetadata(source);
+            metadata.slug = slug;
 
             return metadata;
         })
@@ -94,10 +84,11 @@ const getFilesMetadata = async (files: string[]): Promise<PostMetadata[]> => {
 
 export const getArticles = async ({
     itemsPerPage = ITEMS_PER_PAGE,
-    category,
+    fromCategory,
     page = 1,
-}: { itemsPerPage?: number; category?: string; page?: number } = {}) => {
-    const files = await getFilesInDir(ARTICLES_PATH);
+}: { itemsPerPage?: number; fromCategory?: string; page?: number } = {}) => {
+    const files = await readdir(ARTICLES_PATH);
+
     const articlesMetadata = await getFilesMetadata(files);
     const sortedArticlesMetadata = articlesMetadata.sort((a, b) => {
         const previousArticleDate = dayjs(a.date).unix();
@@ -109,12 +100,10 @@ export const getArticles = async ({
         return 0;
     });
     const filteredArticles =
-        category === 'wpisy' || category === undefined
+        fromCategory === 'wpisy' || fromCategory === undefined
             ? sortedArticlesMetadata
-            : sortedArticlesMetadata.filter(({ categories }: { categories: string[] }) => {
-                  return categories.some((categoryToCheck) => {
-                      return categoryToCheck.toLowerCase() === category.toLowerCase();
-                  });
+            : sortedArticlesMetadata.filter(({ category }: { category: string }) => {
+                  return fromCategory.toLowerCase() === category.toLowerCase();
               });
     const pages = Math.ceil(filteredArticles.length / itemsPerPage);
 
@@ -127,34 +116,29 @@ export const getArticles = async ({
     return { pages, articles };
 };
 
-export const getFilesInDir = async (path: PathLike) => await readdir(path);
-
 const readFromFile = async (pathToFile: string, filename: string) => {
     const postPath = join(pathToFile, filename);
-    const result = await readFile(postPath);
 
+    const result = await readFile(postPath);
     return result;
 };
 
 export const getArticlesPaths = async () => {
-    const files = await getFilesInDir(ARTICLES_PATH);
-    const articlesMetadata = await getFilesMetadata(files);
-    const paths = articlesMetadata.flatMap(({ title, categories }) =>
-        categories.map(() => {
-            const titleAsPath = title.toLowerCase().replaceAll(' ', '-');
-            return {
-                params: {
-                    article: titleAsPath,
-                },
-            };
-        })
-    );
+    const files = await readdir(ARTICLES_PATH);
+    const paths = files.map((filename) => {
+        const filenameWithoutExtension = filename.split('.')[0];
+        return {
+            params: {
+                article: filenameWithoutExtension,
+            },
+        };
+    });
 
     return paths;
 };
 
 export const getAllArticlesPaths = async () => {
-    const files = await getFilesInDir(ARTICLES_PATH);
+    const files = await readdir(ARTICLES_PATH);
     const numberOfPages = files.length / ITEMS_PER_PAGE;
     const paths = convertPagesToPaths(numberOfPages);
     return paths;
@@ -173,7 +157,7 @@ const convertPagesToPaths = (numberOfPages: number) => {
 };
 
 export const getCategoriesPaths = async () => {
-    const files = await getFilesInDir(ARTICLES_PATH);
+    const files = await readdir(ARTICLES_PATH);
     const numberOfPages = files.length / ITEMS_PER_PAGE;
     const articlesMetadata = await getFilesMetadata(files);
 

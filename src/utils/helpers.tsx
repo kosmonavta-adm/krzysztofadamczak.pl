@@ -18,17 +18,17 @@ export const convertFromSlug = (slug: string | string[] | undefined) => {
     return result;
 };
 
-export const getArticlesData = (data: PostMetadata[]) =>
-    data.map(({ title, categories, excerpt, uuid }) => {
-        const urlTitle = convertToSlug(title);
-        const urlCategory = convertToSlug(categories[0]);
+export const getArticlesData = (data: PostMetadata[]) => {
+    return data.map(({ title, slug, category, excerpt, uuid }) => {
+        const urlCategory = convertToSlug(category);
 
         return (
             <Post
                 key={uuid}
                 title={title}
                 excerpt={excerpt}
-                url={getArticlePath(urlCategory, urlTitle)}
+                url={getArticlePath(urlCategory, slug)}
             />
         );
     });
+};

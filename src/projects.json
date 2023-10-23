@@ -1,10 +1,9 @@
 [
     {
-        "img": "/1.img",
-        "title": "Testowy projekt",
-        "description": "Test",
-        "tags": ["express.js", "react", "node"],
-        "githubUrl": "https://google.pl",
-        "liveUrl": "https://google.pl"
+        "title": "Labirynty",
+        "description": "Moje podejście do implementacji algorytmu a-star. Algorytm wyszukuje optymalną ściężkę (niekoniecznie najszybszą) między dwoma punktami. Oprócz samego algorytmu również jest dołączony edytor mapy.",
+        "tags": ["TypeScript", "Pixi.js"],
+        "githubUrl": "https://github.com/kosmonavta-adm/a-star",
+        "liveUrl": "https://a-star-phi.vercel.app/"
     }
 ]

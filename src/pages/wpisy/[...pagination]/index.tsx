@@ -46,7 +46,11 @@ export const getStaticProps: GetStaticProps = async (context: Params) => {
 
     const currentPage = Number(page);
 
-    const { pages, articles } = await getArticles({ page, category, itemsPerPage: ITEMS_PER_PAGE });
+    const { pages, articles } = await getArticles({
+        page,
+        fromCategory: category,
+        itemsPerPage: ITEMS_PER_PAGE,
+    });
 
     const categories = await getCategories();
 
@@ -94,7 +98,7 @@ export default function Articles({
                                 {getArticlesData(articles)}
                             </sContainers.ArticlesList>
                             <Pagination
-                                category={category}
+                                category={category.toLowerCase()}
                                 pages={pages}
                                 currentPage={currentPage}
                             />

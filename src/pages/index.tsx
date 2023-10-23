@@ -13,11 +13,15 @@ import { articlesPart } from '@/utils/constants';
 import { useOverlay } from '../providers/OverlayProvider';
 import { CategoryWithUrl, PostMetadata, Project } from '@/utils/types';
 import { getProjects } from '@/utils/api/projects';
+import { useRef } from 'react';
 
 export const getStaticProps = async () => {
     const category = articlesPart;
 
-    const { articles: recentArticles } = await getArticles({ category, itemsPerPage: 3 });
+    const { articles: recentArticles } = await getArticles({
+        fromCategory: category,
+        itemsPerPage: 3,
+    });
 
     const projects = await getProjects();
 
@@ -42,17 +46,21 @@ export default function Home({
     projects: Project[];
 }) {
     const { isOverlayVisible } = useOverlay();
+    const projectsRef = useRef<HTMLHeadingElement>(null);
 
     return (
         <>
-            <Hero />
+            <Hero projectsRef={projectsRef} />
             <sContainers.Main>
                 <RecentArticles
                     data={recentArticles}
                     categories={categories}
                 />
                 <AboutMe />
-                <Portfolio projects={projects} />
+                <Portfolio
+                    ref={projectsRef}
+                    projects={projects}
+                />
                 <Footer />
             </sContainers.Main>
             <Overlay isOverlayVisible={isOverlayVisible} />

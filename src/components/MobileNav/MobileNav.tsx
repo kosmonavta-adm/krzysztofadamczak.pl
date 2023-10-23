@@ -38,7 +38,7 @@ const MobileNav = () => {
                         setIsMobileMenuOpen={setIsMobileMenuOpen}
                         setIsOverlayVisible={setIsOverlayVisible}
                     />,
-                    document.querySelector('.modals')
+                    document.querySelector('.modals') as HTMLDivElement
                 )}
         </>
     );

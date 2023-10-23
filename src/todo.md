@@ -1,5 +1,0 @@
--   Projekty
-    -   Przenieść do JSON?
--   Statystyki (vercel, google analytics?)
--   Kategorie w CategoriesSection musza przychodzić z serwera
--   Skończyłem na [...pagination]

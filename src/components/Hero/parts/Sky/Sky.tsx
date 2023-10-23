@@ -6,6 +6,10 @@ import * as sCanvas from '@/components/Hero/parts/Sky/Sky.styles';
 const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const requestAnimationFrameIdRef = useRef<number>(0);
+    const STARS_AMOUNT_DESKTOP = 30000;
+    const STARS_AMOUNT_MOBILE = 15000;
+    const CAMERA_Z_MOBILE = 400;
+    const CAMERA_Z_DESKTOP = 500;
 
     useEffect(() => {
         if (canvasRef.current == null || heroRef.current == null) {
@@ -18,7 +22,7 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
         const scene = new Three.Scene();
         const camera = new Three.PerspectiveCamera(75, width / height, 1, 900);
 
-        camera.position.z = height > 400 ? 500 : 400;
+        camera.position.z = height > 400 ? CAMERA_Z_DESKTOP : CAMERA_Z_MOBILE;
         camera.position.y = 0;
         camera.position.x = 0;
 
@@ -29,7 +33,7 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
         });
 
         renderer.setSize(width, height);
-        let starsAmount = height >= 900 ? 30000 : 15000;
+        let starsAmount = height >= 900 ? STARS_AMOUNT_DESKTOP : STARS_AMOUNT_MOBILE;
         const handleResize = () => {
             if (heroRef.current == null) {
                 return;
@@ -37,10 +41,10 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
 
             const { offsetHeight: height } = heroRef.current;
             const { clientWidth: width } = document.body;
-            starsAmount = height >= 900 ? 30000 : 15000;
+            starsAmount = height >= 900 ? STARS_AMOUNT_DESKTOP : STARS_AMOUNT_MOBILE;
 
             camera.aspect = width / height;
-            camera.position.z = height > 400 ? 500 : 400;
+            camera.position.z = height > 400 ? CAMERA_Z_DESKTOP : CAMERA_Z_MOBILE;
             camera.updateProjectionMatrix();
 
             renderer.setSize(width, height);

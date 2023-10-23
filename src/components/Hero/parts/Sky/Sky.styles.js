@@ -8,11 +8,9 @@ export const Canvas = styled.canvas`
     z-index: -1;
     top: 0;
     background-image: radial-gradient(
-        farthest-corner circle at 50% 105% in oklch,
+        farthest-corner circle at 50% 105%,
         #3e6db3 0%,
-        18%,
-        #0d1b3b 63% 63%,
-        85%,
+        #0d1b3b 63%,
         #030314 100%
     );
     clip-path: polygon(

@@ -6,12 +6,17 @@ import * as sTypography from '@/utils/styles/Typography.styles';
 
 import * as sContainers from '@/components/Container/Containers.styles';
 import * as sPortfolio from '@/components/Portfolio/Portfolio.styles';
+import { forwardRef } from 'react';
 
-const Portfolio = ({ projects }: { projects: Project[] }) => {
+type TPortfolio = {
+    projects: Project[];
+};
+
+const Portfolio = forwardRef<HTMLHeadingElement, TPortfolio>(({ projects }, ref) => {
     return (
         <sContainers.Base>
             <sPortfolio.Wrapper>
-                <sTypography.H3>Projekty</sTypography.H3>
+                <sTypography.H3 ref={ref}>Projekty</sTypography.H3>
                 <sTypography.Text>
                     Poniżej znajduje się kilka projektów nad którymi ostatnio pracowałem.
                 </sTypography.Text>
@@ -26,6 +31,8 @@ const Portfolio = ({ projects }: { projects: Project[] }) => {
             </sPortfolio.Wrapper>
         </sContainers.Base>
     );
-};
+});
+
+Portfolio.displayName = 'Portfolio';
 
 export default Portfolio;

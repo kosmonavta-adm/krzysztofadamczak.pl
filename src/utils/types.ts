@@ -1,9 +1,10 @@
 export interface PostMetadata {
     title: string;
-    categories: string[];
+    category: string;
     date: string;
     excerpt: string;
     uuid: string;
+    slug: string;
 }
 
 export type Position = 'nav' | 'footer' | 'hero';

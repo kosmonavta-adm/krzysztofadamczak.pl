@@ -8,6 +8,12 @@ import Button from '@/components/Button/Button.styles';
 import * as sForm from '@/components/ContactForm/ContactForm.styles';
 import FormError from '../FormError/FormError';
 
+type FormSchema = {
+    replyTo: string;
+    name: string;
+    message: string;
+};
+
 export const ContactForm = () => {
     const [isSend, setIsSend] = useState(false);
 
@@ -29,7 +35,7 @@ export const ContactForm = () => {
 
     const startTime = performance.now();
 
-    const sendForm = (data) => {
+    const sendForm = (data: FormSchema) => {
         setIsSend(true);
         const endTime = performance.now();
         const timeFromRenderToSend = endTime - startTime;
@@ -41,17 +47,10 @@ export const ContactForm = () => {
             method: 'POST',
             body,
         });
-        console.log(timeFromRenderToSend);
-        console.log(data);
-        // fetch
     };
 
     return (
-        <sForm.Wrapper
-            onSubmit={handleSubmit(sendForm)}
-            // action="/api/form"
-            // method="post"
-        >
+        <sForm.Wrapper onSubmit={handleSubmit(sendForm)}>
             <sForm.InputWrapper>
                 <sForm.Label htmlFor="replyTo">Twój adres e-mail</sForm.Label>
                 <sForm.Input
@@ -82,7 +81,7 @@ export const ContactForm = () => {
             </sForm.InputWrapper>
             <Button
                 type="submit"
-                // {...(isSend && { disabled: true })}
+                {...(isSend && { disabled: true })}
             >
                 Wyślij
             </Button>

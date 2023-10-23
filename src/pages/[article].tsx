@@ -19,10 +19,10 @@ import {
     Text,
     UnorderedList,
 } from '@/utils/styles/Typography.styles';
+import { ComponentPropsWithoutRef } from 'react';
 
 export const getStaticPaths = async () => {
     const paths = await getArticlesPaths();
-
     return {
         paths,
         fallback: false,
@@ -41,15 +41,7 @@ export const getStaticProps = async (context: Params) => {
 
 export default function Articles({ articleData }: { articleData: MDXRemoteSerializeResult }) {
     const { isOverlayVisible } = useOverlay();
-    const components = {
-        p: (props) => <Text {...props} />,
-        h1: (props) => <ArticleH1 {...props} />,
-        h2: (props) => <ArticleH2 {...props} />,
-        h3: (props) => <ArticleH3 {...props} />,
-        ol: (props) => <OrderedList {...props} />,
-        ul: (props) => <UnorderedList {...props} />,
-        li: (props) => <ListItem {...props} />,
-    };
+
     return (
         <>
             <sContainers.Top>
@@ -60,7 +52,27 @@ export default function Articles({ articleData }: { articleData: MDXRemoteSerial
                     <sContainers.Text>
                         <MDXRemote
                             {...articleData}
-                            components={components}
+                            components={{
+                                p: (props: ComponentPropsWithoutRef<'p'>) => <Text {...props} />,
+                                h1: (props: ComponentPropsWithoutRef<'h1'>) => (
+                                    <ArticleH1 {...props} />
+                                ),
+                                h2: (props: ComponentPropsWithoutRef<'h2'>) => (
+                                    <ArticleH2 {...props} />
+                                ),
+                                h3: (props: ComponentPropsWithoutRef<'h3'>) => (
+                                    <ArticleH3 {...props} />
+                                ),
+                                ol: (props: ComponentPropsWithoutRef<'ol'>) => (
+                                    <OrderedList {...props} />
+                                ),
+                                ul: (props: ComponentPropsWithoutRef<'ul'>) => (
+                                    <UnorderedList {...props} />
+                                ),
+                                li: (props: ComponentPropsWithoutRef<'li'>) => (
+                                    <ListItem {...props} />
+                                ),
+                            }}
                         />
                     </sContainers.Text>
                 </sContainers.Base>
