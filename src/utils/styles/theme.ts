@@ -1,13 +1,15 @@
-import { Comfortaa, Open_Sans } from 'next/font/google';
+import { Comfortaa, Open_Sans, Fira_Code } from 'next/font/google';
 
 const sono = Comfortaa({ subsets: ['latin', 'latin-ext'] });
-const montserrat = Open_Sans({ subsets: ['latin', 'latin-ext'] });
+const openSans = Open_Sans({ subsets: ['latin', 'latin-ext'] });
+const firaCode = Fira_Code({ subsets: ['latin', 'latin-ext'] });
 
 declare module 'styled-components' {
     export interface DefaultTheme {
         font: {
             primary: string;
             secondary: string;
+            code: string;
         };
         colors: {
             shadow: {
@@ -68,8 +70,9 @@ declare module 'styled-components' {
 
 export const theme = {
     font: {
-        primary: montserrat.style.fontFamily,
+        primary: openSans.style.fontFamily,
         secondary: sono.style.fontFamily,
+        code: firaCode.style.fontFamily,
     },
     colors: {
         shadow: {

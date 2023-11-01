@@ -38,7 +38,7 @@ const MobileNav = () => {
                         setIsMobileMenuOpen={setIsMobileMenuOpen}
                         setIsOverlayVisible={setIsOverlayVisible}
                     />,
-                    document.querySelector('.modals') as HTMLDivElement
+                    document.querySelector('#portal-root') as HTMLDivElement
                 )}
         </>
     );

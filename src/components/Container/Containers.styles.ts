@@ -64,7 +64,8 @@ export const ArticlesList = styled.div`
 
 export const Text = styled.article`
     width: 100%;
-    max-width: 100ch;
+    max-width: 90ch;
+    margin: auto;
 `;
 
 export const TwoColumns = styled.section`

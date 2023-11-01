@@ -15,10 +15,18 @@ const BaseHeading = css`
 export const ArticleH1 = styled.h1`
     ${BaseHeading}
     color: ${({ theme }) => theme.colors.black};
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 400;
     line-height: 1.15;
-    padding: 2rem 0;
+    margin: 3rem 0 2rem 0;
+
+    &:first-child {
+        margin: 0 0 2rem 0;
+    }
+
+    &:last-child {
+        margin: 2rem 0 0 0;
+    }
 `;
 export const ArticleH2 = styled.h2`
     ${BaseHeading}
@@ -26,7 +34,15 @@ export const ArticleH2 = styled.h2`
     font-size: 28px;
     font-weight: 500;
     line-height: 1.3;
-    padding: 1rem 0;
+    margin: 1.5rem 0 1rem 0;
+
+    &:first-child {
+        margin: 0 0 1.5rem 0;
+    }
+
+    &:last-child {
+        margin: 1.5rem 0 0 0;
+    }
 `;
 export const ArticleH3 = styled.h3`
     ${BaseHeading}
@@ -34,7 +50,15 @@ export const ArticleH3 = styled.h3`
     font-size: 22px;
     font-weight: 600;
     line-height: 1.5;
-    padding: 0.5rem 0;
+    margin: 0.75rem 0 0.5rem 0;
+
+    &:first-child {
+        margin: 0 0 0.75rem 0;
+    }
+
+    &:last-child {
+        margin: 0.75rem 0 0 0;
+    }
 `;
 
 export const H1 = styled.h1<{ $onDark?: boolean }>`
@@ -74,6 +98,11 @@ export const Text = styled.p`
     text-align: justify;
     line-height: 2;
     font-size: 16px;
+    margin-bottom: 1.5rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
 `;
 
 export const TextLink = styled(Link)<{ $small?: boolean }>`

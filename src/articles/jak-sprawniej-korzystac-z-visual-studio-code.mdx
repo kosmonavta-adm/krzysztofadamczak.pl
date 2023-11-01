@@ -1,0 +1,86 @@
+---
+title: 'Jak sprawniej korzystać z Visual Studio Code'
+category: 'Programowanie'
+excerpt: 'Na początku spójrzmy na temat trochę szerzej. W miejsce Visual Studio Code umieśćmy Twój ulubiony edytor, mogłeś przecież zabłądzić w internecie i trafić tu przez przypadek. Najważniejsza rzecz, która sprawi, że będziesz się w nim sprawniej poruszał, to dokładne poznanie go. Tylko tyle. Know your tools. '
+---
+# Jak sprawniej korzystać z Visual Studio Code?
+
+Na początku spójrzmy na temat trochę szerzej. W miejsce Visual Studio Code umieśćmy Twój ulubiony edytor, mogłeś przecież zabłądzić w internecie i trafić tu przez przypadek. Najważniejsza rzecz, która sprawi, że będziesz się w nim sprawniej poruszał, to dokładne poznanie go. Tylko tyle. *Know your tools.* Zajrzyj do ustawień, przejrzyj skróty, poświęć trochę czasu na zapoznanie się z najnowszymi zmianami. Spróbuj nagiąć go pod Twoje preferencje i styl pracy. A jeżeli poczujesz, że wyczerpałeś wszystkie możliwości — udaj się w innym kierunku.
+
+Wracając do Visual Studio Code — przedstawię kilka aspektów, które składają się na mój aktualny setup. Pamiętaj, że to, co sprawdza się u mnie, dla Ciebie może być zaprzeczeniem jakiejkolwiek ergonomii pracy. Przede wszystkim chciałbym zachęcić Cię do budowania własnego środowiska - potraktuj to jako luźny wstęp do dalszych eksperymentów.
+
+## Wizualne rozpraszacze
+
+Natłok przycisków, pasków i innych elementów może przytłoczyć. Dlatego staram się usunąć to czego nie potrzebuję, zostawiając elementy z których korzystam. Tym samym edytor staje się dla mnie przeźroczysty, nie rozprasza podczas pisania programu. VSC pozwala na naprawdę sporo w kwestii modyfikowania interfejsu. Wystarczy, że klikniesz prawym przyciskiem myszy na konkretny element i jest duża szansa, że w menu kontekstowym zobaczysz opcję *Hide...* Nie chowaj wszystkiego od razu. Zwróć uwagę z jakich opcji nigdy nie korzystasz, być może porządki przyniosą Ci więcej spokoju umysłu? :-)
+  
+Kolejna rzecz która nie dawała mi spokoju to zakładki. Prawie zawsze otwierałem nowe zapominając natychmiast o poprzednich, przez co pasek z zakładkami rósł i rósł uniemożlwiając tym samym odnalezienie w nim czegokolwiek. Próbowałem pilnować porządku i zamykać je na bieżąco, ale szczerze mówiąc kompletnie mi to nie wychodziło. Po chwili przeszukiwania opcji znalazłem to co mnie interesuje — wyłączyłem zakładki całkowicie, ograniczyłem też liczbę otwartych edytorów do 4 w grupie z wyjątkiem niezapisanych. Każdy następny otwarty plik zamyka ostatni edytor. Między edytorami i grupami przemieszczam się za pomocą skrótów klawiszowych, które poznasz w następnym akapicie.
+
+## Skróty klawiszowe
+Spróbuj częściej korzystać z klawiatury zamiast z myszki. Zwłaszcza przy czynnościach, które wykonujesz regularnie. Początkowo możesz czuć, że wszystko zajmuje Ci więcej czasu, że jest to dla Ciebie niekomfortowe — daj sobie chwilę i pozwól przywyknąć do nowego sposobu poruszania się po programie. Poniżej kilka skrótów bez których nie wyobrażam sobie pracy w VSC.
+  
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>shift</ShortcutButton> + <ShortcutButton>.</ShortcutButton> — Nawigacja po breadcrumbs. Strzałki lewo/prawo pozwolą Ci na przechodzenie między folderami. Jeżeli chcesz przesunąć się o jeden folder w prawo naciśnij <ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>strzałka w prawo</ShortcutButton>.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>p</ShortcutButton> — Okno do wyszukiwania plików. Możesz przeszukiwać po nazwach, ścieżkach, rozszerzeniach, pierwszych literach. To jest mój domyślny sposób otwierania plików.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>shift</ShortcutButton> + <ShortcutButton>p</ShortcutButton> — Menu z listą akcji w VSC. Przydatne kiedy nie chcesz ustawiać skrótu dla opcji z której nie korzystasz zbyt często. Chcesz zmienić duże litery na małe? Zacznij wpisywać 'Lowercase'. Chcesz włączyć tymczasowo zawijanie wierszy? Wpisz 'Word Wrap'.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>shift</ShortcutButton> + <ShortcutButton>e</ShortcutButton> — Otwiera / zamyka drzewko plików.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>b</ShortcutButton> — Otwiera / zamyka lewy pasek.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>\<cyfra od 1 do 4></ShortcutButton> — Przełącza na wskazany edytor.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>/</ShortcutButton> — Przekształca linię/blok w komentarz.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>[</ShortcutButton> — Zmniejsza wcięcie linii / bloku.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>]</ShortcutButton> — Zwiększa wcięcie linii / bloku.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>d</ShortcutButton> — Dodaje kursor przy następnym wystąpieniu zaznaczonego fragmentu.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>.</ShortcutButton> — Włącza menu z akcjami, przydatne kiedy chcemy skorzystać np. z quick fix / dodać return w funkcji.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>spacja</ShortcutButton> — Włącza menu z dostępnymi podpowiedziami w miejscu w którym stoi kursor.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>alt</ShortcutButton> <ShortcutButton>\<strzałki góra-dół></ShortcutButton> — Wstawia dodatkowe kursory powyżej / poniżej.\
+<ShortcutButton>shift</ShortcutButton> + <ShortcutButton>alt</ShortcutButton> <ShortcutButton>\<strzałki góra-dół></ShortcutButton> — Duplikuje zaznaczony fragment powyżej / poniżej.\
+<ShortcutButton>alt</ShortcutButton> + <ShortcutButton>\<strzałki góra-dół></ShortcutButton> — Przesuwa zaznaczoną linię / blok w górę / dół.\
+<ShortcutButton>F2</ShortcutButton> — Zmienia nazwę symbolu w całym pliku - przez symbol rozumiem nazwę funkcji, zmiennej itd.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>shift</ShortcutButton> + <ShortcutButton>\\</ShortcutButton> — Przemieszcza kursor między nawiasem otwierającym / zamykającym.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>shift</ShortcutButton> + <ShortcutButton>k</ShortcutButton> — Usuwa wszystkie zaznaczone linie.\
+<ShortcutButton>shfit</ShortcutButton> + <ShortcutButton>alt</ShortcutButton> + <ShortcutButton>\<strzałki lewo-prawo></ShortcutButton> — Rozszerza / zawęża zaznaczenie tekstu. Przydatne kiedy chcemy zaznaczyć środek funkcji / tagu itd.
+  
+Dodatkowe skróty, które sam ustawiłem:
+
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>;</ShortcutButton> — Otwiera poprzedni edytor w grupie.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>'</ShortcutButton> — Otwiera następny edytor w grupie.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>tab</ShortcutButton> — Otwiera menu z aktywnymi edytorami we wszystkich grupach.\
+<ShortcutButton>alt</ShortcutButton> + <ShortcutButton>e</ShortcutButton> — Rozszerza aktywny edytor. Przydatne kiedy chcemy tymczasowo skupić się na jednym pliku nie zamykając pozostałych grup.\
+<ShortcutButton>alt</ShortcutButton> + <ShortcutButton>v</ShortcutButton> <ShortcutButton>\<strzałki góra-dół/lewo-prawo></ShortcutButton> — Otwiera nowe okno edytora w kierunku wciśniętej strzałki.\
+<ShortcutButton>alt</ShortcutButton> + <ShortcutButton>r</ShortcutButton> — Otwiera menu z referencjami funkcji.\
+<ShortcutButton>alt</ShortcutButton> + <ShortcutButton>d</ShortcutButton> — Przechodzi do definicji funkcji.\
+<ShortcutButton>windows</ShortcutButton> + <ShortcutButton>alt</ShortcutButton> + <ShortcutButton>\<strzałki góra-dół/lewo-prawo></ShortcutButton> — Przenosi okno do grupy w zalezności od wciśniętej strzałki.\
+<ShortcutButton>ctrl</ShortcutButton> + <ShortcutButton>`</ShortcutButton> — Pokazuje / chowa terminal.
+
+## Wtyczki
+
+Jeden z ważniejszych motorów napędowych Visual Studio Code. Jest ich całe mnóstwo i możesz w nich dosłownie utonąć. Osobiście korzystam tylko z kilku.
+
+**Quokka.js** — Do szybkiego prototypowania / sprawdzania rzeczy w Java Script/Type Script. Pokazuje rezultat kodu bezpośrednio w konsoli.\
+**Error Lens** — Pokazuje błędy / ostrzeżenia bezpośrednio w edytorze\
+**Prettier** — Automatycznie formatuje kod.
+
+## Snippets
+
+Są to fragmenty kodu, które możesz wstawiać wpisując wybrany przez siebie ciąg znaków. Znajdziesz mnóstwo gotowych wtyczek z predefiniowanymi skrótowcami, ale istnieje spora szansa, że ze znacznej większości nigdy nie skorzystasz. Dlatego wolę samodzielnie tworzyć takie szablony. Ostatnio często korzystałem ze *styled-components*. Ciągłe pisanie tego typu kodu jest powtarzalne i męczące, dlaczego by tego nie zautomatyzować?
+```ts
+export const Wrapper = styled.nav`
+    
+`;
+```
+
+Możemy to osiągnąć w ten sposób. Poniższy snippet pojawi się po wpisaniu *esc* i zaakceptowaniu enterem. Zwróć uwagę na znak $ z liczbą obok. W tych miejscach będzie pojawiał się kursor po naciśnięciu klawisza <ShortcutButton>tab</ShortcutButton>. Kursor zawsze zaczyna w miejscu gdzie jest wpisane $1 i kończy przy $0.
+
+```json
+"Styled component with export": {
+    "scope": "javascript, javascriptreact, typescript, typescriptreact",
+    "prefix": "esc",
+    "body": ["export const $1 = styled.$2`", "$0", "`;"]
+}
+```
+
+Snippety oferują naprawdę mnóstwo możliwości, ale myślę, że to jest temat na zupełnie osobny wpis.
+
+## Podsumowanie
+
+Mój setup praktycznie cały czas ewoluuje. Często znajduję rzeczy które chcę zmienić bądź ulepszyć. Czasami trafiam na rzeczy które ciężko zmienić w VSC. Zdecydowanie nie jest to idealny edytor, ale jestem zadowolony z obecnego sposobu pracy który wypracowałem. Spoglądam od czasu do czasu na inne edytory — zwłaszcza w stronę *neovim*. Ciekawi mnie ze względu na swój unikalny sposób poruszania się i duże możliwości konfiguracji. Zdecydowanie jest to opcja którą kiedyś przetestuję. Kwestia priorytetów na dany moment.
+
+<Lightbox src={'/jak-sprawniej-korzystac-z-visual-studio-code/2.jpg'} alt=''/>

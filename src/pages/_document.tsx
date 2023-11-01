@@ -12,7 +12,7 @@ export default function MyDocument(): NextPage {
             <body>
                 <Main />
                 <NextScript />
-                <div className="modals"></div>
+                <div id="portal-root"></div>
             </body>
         </Html>
     );

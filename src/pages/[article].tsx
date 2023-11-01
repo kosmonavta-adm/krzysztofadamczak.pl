@@ -1,11 +1,15 @@
+import { ComponentPropsWithoutRef } from 'react';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import rehypePrismCommon from 'rehype-prism-plus/common';
 
 import Nav from '@/components/Nav/Nav';
 import Overlay from '@/components/Overlay/Overlay';
 import Footer from '@/components/Footer/Footer';
-
+import { ShortcutButton } from '@/components/ShortcutButton/ShortcutButton.styles';
+import { Code } from '@/components/Code/Code.styles';
+import Lightbox from '@/components/Lightbox/Lightbox';
 import * as sContainers from '@/components/Container/Containers.styles';
 
 import { getArticleFromSlug, getArticlesPaths } from '@/utils/api/articles';
@@ -19,7 +23,6 @@ import {
     Text,
     UnorderedList,
 } from '@/utils/styles/Typography.styles';
-import { ComponentPropsWithoutRef } from 'react';
 
 export const getStaticPaths = async () => {
     const paths = await getArticlesPaths();
@@ -32,7 +35,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: Params) => {
     const { article } = context.params;
     const source = await getArticleFromSlug(article);
-    const articleData = await serialize(source);
+    const articleData = await serialize(source, {
+        mdxOptions: {
+            remarkPlugins: [],
+            rehypePlugins: [rehypePrismCommon],
+        },
+    });
 
     return {
         props: { articleData },
@@ -72,6 +80,11 @@ export default function Articles({ articleData }: { articleData: MDXRemoteSerial
                                 li: (props: ComponentPropsWithoutRef<'li'>) => (
                                     <ListItem {...props} />
                                 ),
+                                pre: (props: ComponentPropsWithoutRef<'code'>) => (
+                                    <Code {...props} />
+                                ),
+                                Lightbox: (props) => <Lightbox {...props} />,
+                                ShortcutButton: (props) => <ShortcutButton {...props} />,
                             }}
                         />
                     </sContainers.Text>
