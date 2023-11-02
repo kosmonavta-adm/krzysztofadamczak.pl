@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import Nav from '@/components/Nav/Nav';
 import Overlay from '@/components/Overlay/Overlay';
 import ContactForm from '@/components/ContactForm/ContactForm';
@@ -18,6 +20,21 @@ export default function Contact() {
 
     return (
         <>
+            <Head>
+                <title>Krzysztof Adamczak</title>
+                <meta
+                    name="description"
+                    content="Masz pytanie? Chcesz się czegoś dowiedzieć? Napisz!"
+                />
+                <meta
+                    property="og:title"
+                    content="Krzysztof Adamczak"
+                />
+                <meta
+                    property="og:description"
+                    content="Masz pytanie? Chcesz się czegoś dowiedzieć? Napisz!"
+                />
+            </Head>
             <sContainers.Top>
                 <Nav position="nav" />
             </sContainers.Top>

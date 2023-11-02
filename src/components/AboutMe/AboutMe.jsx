@@ -29,7 +29,7 @@ const AboutMe = () => {
                         <sTypography.H3>O mnie</sTypography.H3>
                         <sTypography.Text>
                             Cześć! Mam na imię Krzysztof. Programowanie to moja pasja odkąd tylko
-                            pamiętam. Już za szkolnych lat ciągnęło mnie do różnych języków
+                            pamiętam. Już od szkolnych lat ciągnęło mnie do różnych języków
                             programowania, tworzyłem pierwsze strony, programy, krótko mówiąc -
                             wcielałem w życie wszystkie małe zajawki. Ta pasja trwa nieprzerwanie do
                             dziś. Zawsze będzie nowy framework, nowa biblioteka czy nowy język

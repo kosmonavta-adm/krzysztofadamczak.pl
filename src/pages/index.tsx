@@ -14,6 +14,7 @@ import { useOverlay } from '../providers/OverlayProvider';
 import { CategoryWithUrl, PostMetadata, Project } from '@/utils/types';
 import { getProjects } from '@/utils/api/projects';
 import { useRef } from 'react';
+import Head from 'next/head';
 
 export const getStaticProps = async () => {
     const category = articlesPart;
@@ -50,6 +51,29 @@ export default function Home({
 
     return (
         <>
+            <Head>
+                <title>Krzysztof Adamczak</title>
+                <meta
+                    name="description"
+                    content="Cześć! Mam na imię Krzysztof. Programowanie to moja pasja odkąd tylko
+                            pamiętam. Już od szkolnych lat ciągnęło mnie do różnych języków
+                            programowania, tworzyłem pierwsze strony, programy, krótko mówiąc -
+                            wcielałem w życie wszystkie małe zajawki. Ta pasja trwa nieprzerwanie do
+                            dziś."
+                />
+                <meta
+                    property="og:title"
+                    content="Krzysztof Adamczak"
+                />
+                <meta
+                    property="og:description"
+                    content="Cześć! Mam na imię Krzysztof. Programowanie to moja pasja odkąd tylko
+                            pamiętam. Już od szkolnych lat ciągnęło mnie do różnych języków
+                            programowania, tworzyłem pierwsze strony, programy, krótko mówiąc -
+                            wcielałem w życie wszystkie małe zajawki. Ta pasja trwa nieprzerwanie do
+                            dziś."
+                />
+            </Head>
             <Hero projectsRef={projectsRef} />
             <sContainers.Main>
                 <RecentArticles

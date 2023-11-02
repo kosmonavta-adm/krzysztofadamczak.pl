@@ -12,8 +12,8 @@ const ARTICLES_PATH = join('src', 'articles');
 export const getArticleFromSlug = async (slug: string) => {
     const filename = `${slug}.mdx`;
     const source = await readFromFile(ARTICLES_PATH, filename);
-    const { content } = matter(source);
-    return content;
+    const { content, data } = matter(source);
+    return { content, data };
 };
 
 export const getCategories = async () => {

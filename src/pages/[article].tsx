@@ -12,6 +12,9 @@ import { Code } from '@/components/Code/Code.styles';
 import Lightbox from '@/components/Lightbox/Lightbox';
 import * as sContainers from '@/components/Container/Containers.styles';
 
+import * as sTypography from '@/utils/styles/Typography.styles';
+import * as sPages from '@/utils/styles/pages.styles';
+
 import { getArticleFromSlug, getArticlesPaths } from '@/utils/api/articles';
 import { useOverlay } from '@/providers/OverlayProvider';
 import {
@@ -23,6 +26,9 @@ import {
     Text,
     UnorderedList,
 } from '@/utils/styles/Typography.styles';
+import { PostMetadata } from '@/utils/types';
+import dayjs from 'dayjs';
+import Head from 'next/head';
 
 export const getStaticPaths = async () => {
     const paths = await getArticlesPaths();
@@ -34,8 +40,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: Params) => {
     const { article } = context.params;
-    const source = await getArticleFromSlug(article);
-    const articleData = await serialize(source, {
+    const { content, data: metadata } = await getArticleFromSlug(article);
+
+    const articleData = await serialize(content, {
         mdxOptions: {
             remarkPlugins: [],
             rehypePlugins: [rehypePrismCommon],
@@ -43,15 +50,37 @@ export const getStaticProps = async (context: Params) => {
     });
 
     return {
-        props: { articleData },
+        props: { articleData, metadata },
     };
 };
 
-export default function Articles({ articleData }: { articleData: MDXRemoteSerializeResult }) {
+export default function Articles({
+    articleData,
+    metadata,
+}: {
+    articleData: MDXRemoteSerializeResult;
+    metadata: PostMetadata;
+}) {
     const { isOverlayVisible } = useOverlay();
-
+    const { date, title, excerpt } = metadata;
+    const createdAt = dayjs(date).format('DD.MM.YYYY r.');
     return (
         <>
+            <Head>
+                <title>{title}</title>
+                <meta
+                    name="description"
+                    content={excerpt}
+                />
+                <meta
+                    property="og:title"
+                    content={title}
+                />
+                <meta
+                    property="og:description"
+                    content={excerpt}
+                />
+            </Head>
             <sContainers.Top>
                 <Nav position="nav" />
             </sContainers.Top>
@@ -87,6 +116,9 @@ export default function Articles({ articleData }: { articleData: MDXRemoteSerial
                                 ShortcutButton: (props) => <ShortcutButton {...props} />,
                             }}
                         />
+                        <sPages.createdAt>
+                            <sTypography.Text>Napisano: {createdAt}</sTypography.Text>
+                        </sPages.createdAt>
                     </sContainers.Text>
                 </sContainers.Base>
                 <Footer />

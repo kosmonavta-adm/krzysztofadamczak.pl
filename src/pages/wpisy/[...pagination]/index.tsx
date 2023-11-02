@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
+import Head from 'next/head';
 
 import Sidebar from '@/components/Sidebar/Sidebar';
 import CategoriesSection from '@/components/Sidebar/parts/CategoriesSection/CategoriesSection';
@@ -84,6 +85,30 @@ export default function Articles({
 
     return (
         <>
+            <Head>
+                <title>
+                    Krzysztof Adamczak -{' '}
+                    {isAllArticles ? 'wszystkie wpisy' : `kategoria: ${category}`}
+                </title>
+                <meta
+                    name="description"
+                    content={
+                        isAllArticles ? 'Lista wszystkich wpisów' : `Wpisy z kategorii: ${category}`
+                    }
+                />
+                <meta
+                    property="og:title"
+                    content={`Krzysztof Adamczak - ${
+                        isAllArticles ? 'wszystkie wpisy' : `kategoria: ${category}`
+                    }`}
+                />
+                <meta
+                    property="og:description"
+                    content={
+                        isAllArticles ? 'Lista wszystkich wpisów' : `Wpisy z kategorii: ${category}`
+                    }
+                />
+            </Head>
             <sContainers.Top>
                 <Nav position="nav" />
             </sContainers.Top>

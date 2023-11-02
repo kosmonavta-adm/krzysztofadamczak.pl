@@ -1,7 +1,7 @@
 [
     {
         "title": "Labirynt",
-        "description": "Moje podejście do implementacji algorytmu a-star. Algorytm wyszukuje optymalną ściężkę (niekoniecznie najszybszą) między dwoma punktami. Oprócz samego algorytmu stworzyłem też edytor mapy.",
+        "description": "Moje podejście do wdrożenia algorytmu a-star. Algorytm przeszukuje mapę pod kątem optymalnej ścieżki (niekoniecznie najszybciej). Aplikacja zawiera też edytor mapy w którym można tworzyć różnego rodzaju labirynty.",
         "tags": ["TypeScript", "Pixi.js"],
         "githubUrl": "https://github.com/kosmonavta-adm/a-star",
         "liveUrl": "https://a-star-phi.vercel.app/",
