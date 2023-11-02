@@ -7,9 +7,7 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const requestAnimationFrameIdRef = useRef<number>(0);
     const STARS_AMOUNT_DESKTOP = 30000;
-    const STARS_AMOUNT_MOBILE = 15000;
-    const CAMERA_Z_MOBILE = 400;
-    const CAMERA_Z_DESKTOP = 500;
+    const STARS_AMOUNT_MOBILE = 5000;
 
     useEffect(() => {
         if (canvasRef.current == null || heroRef.current == null) {
@@ -19,10 +17,11 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
         const { offsetHeight: height } = heroRef.current;
         const { clientWidth: width } = document.body;
 
-        const scene = new Three.Scene();
-        const camera = new Three.PerspectiveCamera(75, width / height, 1, 900);
+        const isMobile = height <= 400;
 
-        camera.position.z = height > 400 ? CAMERA_Z_DESKTOP : CAMERA_Z_MOBILE;
+        const scene = new Three.Scene();
+        const camera = new Three.PerspectiveCamera(90, width / height, 1, 1500);
+        camera.position.z = 500;
         camera.position.y = 0;
         camera.position.x = 0;
 
@@ -44,7 +43,7 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
             starsAmount = height >= 900 ? STARS_AMOUNT_DESKTOP : STARS_AMOUNT_MOBILE;
 
             camera.aspect = width / height;
-            camera.position.z = height > 400 ? CAMERA_Z_DESKTOP : CAMERA_Z_MOBILE;
+            camera.position.z = 500;
             camera.updateProjectionMatrix();
 
             renderer.setSize(width, height);
@@ -67,9 +66,12 @@ const Sky = ({ heroRef }: { heroRef: RefObject<HTMLDivElement> }) => {
             return Math.random() * (max - min) + min;
         };
 
+        const xWidth = isMobile ? width / 1.5 : width / 1.1;
+        const yHeight = isMobile ? height * 2 : height;
+
         for (let i = 0; i < starsAmount; i++) {
-            const x = (Math.random() * width) / 1.1;
-            const y = Math.random() * height;
+            const x = Math.random() * xWidth;
+            const y = Math.random() * yHeight;
 
             const distance = Math.sqrt(Math.pow(x - 0, 2) + Math.pow(y - -height, 2));
             const angle = (Math.atan2(y, x) * 180) / Math.PI;
