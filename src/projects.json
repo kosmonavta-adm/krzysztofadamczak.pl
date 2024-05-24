@@ -1,5 +1,21 @@
 [
     {
+        "title": "Finansoholik",
+        "description": "Finansoholik to aplikacja która ułatwi Ci zarządzanie własnym budżetem. Korzystając z niego możesz pogrupować wpływy i wydatki według własnego pomysłu, wygenerować na ich podstawie szereg wykresów i przeanalizować swoją sytuację finansową.",
+        "tags": [
+            "TypeScript",
+            "NextJS",
+            "TailwindCSS",
+            "Supabase",
+            "React Query",
+            "React Hook Form",
+            "Nivo"
+        ],
+        "githubUrl": "",
+        "liveUrl": "https://finansoholik.pl",
+        "img": "/projects/finansoholik.png"
+    },
+    {
         "title": "Labirynt",
         "description": "Moje podejście do wdrożenia algorytmu a-star. Algorytm przeszukuje mapę pod kątem optymalnej ścieżki (niekoniecznie najszybciej). Aplikacja zawiera też edytor mapy w którym można tworzyć różnego rodzaju labirynty.",
         "tags": ["TypeScript", "Pixi.js"],

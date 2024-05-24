@@ -35,18 +35,20 @@ const Card = ({ data }: { data: ProjectWithoutKey }) => {
                     ))}
                 </sCard.Tags>
                 <sCard.Links>
-                    <sTypography.TextLink
-                        $small
-                        href={githubUrl}
-                    >
-                        <Image
-                            src={github}
-                            alt="GitHub logo"
-                            width={24}
-                            height={24}
-                        />
-                        GitHub
-                    </sTypography.TextLink>
+                    {githubUrl !== '' && (
+                        <sTypography.TextLink
+                            $small
+                            href={githubUrl}
+                        >
+                            <Image
+                                src={github}
+                                alt="GitHub logo"
+                                width={24}
+                                height={24}
+                            />
+                            GitHub
+                        </sTypography.TextLink>
+                    )}
                     <sTypography.TextLink
                         href={liveUrl}
                         $small
