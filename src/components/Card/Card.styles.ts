@@ -43,8 +43,9 @@ export const Content = styled.div`
 
 export const Tags = styled.div`
     display: flex;
+    flex-wrap: wrap;
     margin: 16px 0 32px 0;
-    gap: 32px;
+    gap: 16px 32px;
 `;
 
 export const Tag = styled.div`
